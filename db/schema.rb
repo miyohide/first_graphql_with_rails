@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_21_115538) do
+ActiveRecord::Schema.define(version: 2020_04_22_110717) do
 
   create_table "photos", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "category", default: "PORTRAIT"
   end
 
 end
