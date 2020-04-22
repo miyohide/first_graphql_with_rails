@@ -4,6 +4,7 @@ module Types
     field :url, String, null: false
     field :name, String, null: false
     field :description, String, null: true
+    field :category, Types::PhotoCategory, null: false
 
     def url
       "http://yoursite.com/img/#{object.id}.jpg"
