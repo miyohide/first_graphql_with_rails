@@ -6,13 +6,18 @@ module Types
     field :description, String, null: true
     field :category, Types::PhotoCategory, null: false
     field :postedBy, Types::UserType, null: false
+    field :taggedUsers, [Types::UserType], null: false
 
     def url
       "http://yoursite.com/img/#{object.id}.jpg"
     end
 
     def posted_by
-      object.user
+      object.users
+    end
+
+    def tagged_users
+      object.users
     end
   end
 end
