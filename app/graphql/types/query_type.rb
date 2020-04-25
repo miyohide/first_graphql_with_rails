@@ -9,5 +9,10 @@ module Types
     def all_photos
       Photo.all
     end
+
+    field :allUsers, [Types::UserType], null: false
+    def all_users
+      User.all
+    end
   end
 end
