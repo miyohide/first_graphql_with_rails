@@ -1,24 +1,31 @@
-# README
+# API詳細
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## すべてのPhotoを取得する
 
-Things you may want to cover:
+```
+{
+  allPhotos {
+    id
+    name
+    category
+  }
+}
+```
 
-* Ruby version
+## Photoの作成
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+mutation {
+  postPhoto(input:{
+    attributes: {
+      name: "nameの値"
+      description: "descriptionの値"
+    }
+  }) {
+    photo {
+      id
+      name
+    }
+  }
+}
+```
