@@ -4,5 +4,9 @@ module Types
     field :name, String, null: false
     field :avatar, String, null: true
     field :postedPhotos, [Types::PhotoType], null: true
+
+    def posted_photos
+      object.photos
+    end
   end
 end
