@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_25_015348) do
+ActiveRecord::Schema.define(version: 2020_04_25_080837) do
 
   create_table "photos", force: :cascade do |t|
     t.string "name"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 2020_04_25_015348) do
     t.index ["user_id"], name: "index_photos_on_user_id"
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.integer "photo_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["photo_id"], name: "index_tags_on_photo_id"
+    t.index ["user_id"], name: "index_tags_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "github_login"
     t.string "name"
@@ -31,4 +40,6 @@ ActiveRecord::Schema.define(version: 2020_04_25_015348) do
   end
 
   add_foreign_key "photos", "users"
+  add_foreign_key "tags", "photos"
+  add_foreign_key "tags", "users"
 end
