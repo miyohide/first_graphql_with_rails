@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_22_110717) do
+ActiveRecord::Schema.define(version: 2020_04_25_015348) do
 
   create_table "photos", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,17 @@ ActiveRecord::Schema.define(version: 2020_04_22_110717) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "category", default: "PORTRAIT"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_photos_on_user_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "github_login"
+    t.string "name"
+    t.string "avatar"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "photos", "users"
 end
