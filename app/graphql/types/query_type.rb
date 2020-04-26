@@ -5,9 +5,13 @@ module Types
       42
     end
 
-    field :allPhotos, [Types::PhotoType], null: false
-    def all_photos
-      Photo.all
+    field :allPhotos, [Types::PhotoType], null: false do
+      argument :after, Types::DateTime, required: false
+    end
+
+    def all_photos(after:)
+      puts "#{after.class}"
+      Photo.where("created_at >= ?", after)
     end
 
     field :allUsers, [Types::UserType], null: false
