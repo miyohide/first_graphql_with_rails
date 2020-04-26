@@ -7,6 +7,7 @@ module Types
     field :category, Types::PhotoCategory, null: false
     field :postedBy, Types::UserType, null: false
     field :taggedUsers, [Types::UserType], null: false
+    field :created, Types::DateTime, null: false
 
     def url
       "http://yoursite.com/img/#{object.id}.jpg"
@@ -18,6 +19,10 @@ module Types
 
     def tagged_users
       object.users
+    end
+
+    def created
+      object.created_at
     end
   end
 end
