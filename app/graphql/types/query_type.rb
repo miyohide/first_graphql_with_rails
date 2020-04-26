@@ -9,8 +9,7 @@ module Types
       argument :after, Types::DateTime, required: false
     end
 
-    def all_photos(after:)
-      puts "#{after.class}"
+    def all_photos(after: Time.new(0, 1, 1))
       Photo.where("created_at >= ?", after)
     end
 
