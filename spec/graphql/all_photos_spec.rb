@@ -22,4 +22,25 @@ RSpec.describe 'allPhotos' do
       expect(result['data']['allPhotos'][1]['name']).to eq(@p2.name)
     end
   end
+
+  context 'call with after argument' do
+    before do
+      u = User.create(github_login: 'user1', name: 'user1')
+      @p1 = Photo.create(name: 'photo1', user: u)
+      @p2 = Photo.create(name: 'photo2', user: u)
+      t = (Time.now + 1.year).to_s
+      @query_string = <<-GRAPHQL
+{
+  allPhotos(after: "#{t}") {
+    name
+  }
+}
+      GRAPHQL
+    end
+
+    it 'return no photo data' do
+      result = FirstGraphqlSchema.execute(@query_string)
+      expect(result['data']['allPhotos'].size).to eq(0)
+    end
+  end
 end
