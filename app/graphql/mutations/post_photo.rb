@@ -8,7 +8,8 @@ module Mutations
     field :result, Boolean, null: true
 
     def resolve(attributes:)
-      photo = Photo.create(attributes.to_hash)
+      #photo = Photo.create(attributes.to_hash)
+      photo = Photo.create_with_postedBy(attributes.to_hash)
       {
           photo: photo,
           result: photo.errors.blank?
