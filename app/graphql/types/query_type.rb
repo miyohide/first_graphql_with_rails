@@ -2,7 +2,7 @@ module Types
   class QueryType < Types::BaseObject
     field :totalPhotos, Int, null: false
     def total_photos
-      42
+      Photo.count
     end
 
     field :allPhotos, [Types::PhotoType], null: false do
