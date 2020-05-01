@@ -33,3 +33,5 @@ jobs:
       run: bundle install
     - name: Run tests
       run: bundle exec rspec
+      env:
+        RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_VARIABLE }}
