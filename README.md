@@ -1,31 +1,3 @@
-# API詳細
+# これはなにか
 
-## すべてのPhotoを取得する
-
-```
-{
-  allPhotos {
-    id
-    name
-    category
-  }
-}
-```
-
-## Photoの作成
-
-```
-mutation {
-  postPhoto(input:{
-    attributes: {
-      name: "nameの値"
-      description: "descriptionの値"
-    }
-  }) {
-    photo {
-      id
-      name
-    }
-  }
-}
-```
+[初めてのGraphQL](https://www.oreilly.co.jp/books/9784873118932/)に載っていたGraphQLサーバーの実装をRailsで実装してみたものです。
