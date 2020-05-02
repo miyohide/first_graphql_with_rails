@@ -5,6 +5,11 @@ module Types
       Photo.count
     end
 
+    field :totalUsers, Int, null: false
+    def total_users
+      User.count
+    end
+
     field :allPhotos, [Types::PhotoType], null: false do
       argument :after, Types::DateTime, required: false
     end
